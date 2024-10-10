@@ -1,4 +1,8 @@
 from flask import Flask
+from flask_migrate import Migrate
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from Controller.user_controller import user_controller
 from Controller.group_controller import group_controller
@@ -12,6 +16,8 @@ def create_app():
     db.init_app(app)
     with app.app_context():
         db.create_all()
+
+    migrate = Migrate(app, db)
 
     app.register_blueprint(user_controller)
     app.register_blueprint(group_controller)

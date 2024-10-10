@@ -1,1 +1,4 @@
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:132003@localhost/flaskdb'
+import os
+from dotenv import load_dotenv
+load_dotenv()
+SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_ENV_VAR')

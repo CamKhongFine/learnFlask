@@ -17,6 +17,7 @@ def create_user():
         data = request.get_json()
         new_user = User(user_name=data['user_name'], email=data['email'])
         project_id_list = data['project']
+        alll = Project.query.filter(Project.id.in_(project_id_list)).all()
         for id in project_id_list:
             project = Project.query.filter_by(project_id=id).first()
             if project:

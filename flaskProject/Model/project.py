@@ -7,6 +7,7 @@ class Project(db.Model):
     project_name = db.Column(db.String(50), nullable=False, unique=True)
     description = db.Column(db.String(120), nullable=False)
 
+
     def serialize(self):
         return {
             'project_id': self.project_id,

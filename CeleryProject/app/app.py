@@ -1,12 +1,8 @@
-from flask import Flask
+from tasks.tasks import flask_app
+from controller.tasks_controller import task
 
-app = Flask(__name__)
 
-
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
-
+flask_app.register_blueprint(task)
 
 if __name__ == '__main__':
-    app.run()
+    flask_app.run()

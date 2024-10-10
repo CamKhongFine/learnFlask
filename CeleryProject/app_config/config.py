@@ -1,7 +1,5 @@
 from celery import Celery, Task
 from flask import Flask
-from celery import shared_task
-from database.db import *
 
 def celery_init_app(app: Flask) -> Celery:
     class FlaskTask(Task):
@@ -20,8 +18,8 @@ def create_app() -> Flask:
     app.config.from_mapping(
         CELERY=dict(
             broker_url='redis://localhost:6379/0',
-            result_backend='redis://localhost:6379/0',
-            task_ignore_result=True,
+            result_backend="redis://localhost:6379/0",
+            task_ignore_result=False,
         ),
     )
     app.config.from_prefixed_env()

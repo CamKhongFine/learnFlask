@@ -1,6 +1,6 @@
 FROM python:3.6-slim-buster
 
-WORKDIR /app
+WORKDIR /App
 
 COPY requirements.txt ./
 
